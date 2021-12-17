@@ -37,15 +37,15 @@ const Personal = () => {
 const handleFormSubmit = (e) =>{
   e.preventDefault();
 setData({
-dataList: personalData,
-languages: lang
+ personalData,
+ lang
 })
  console.log(data)
  console.log(lang)
  setPersonalData('')
 }
 const checkKeyDown = (e) => {
-  if (e.code === 'Enter');
+  if (e.code === 'Enter') e.preventDefault()
 };
   return (
     <div className="container">
@@ -53,7 +53,7 @@ const checkKeyDown = (e) => {
         <h6>How can employers contact you?</h6>
       </div>
       <div className="form">
-        <form onSubmit={handleFormSubmit} onKeyDown={(e) => checkKeyDown(e)}>
+        <form  onKeyDown={(e) => checkKeyDown(e)}>
           <div className="row">
             <div className="col-lg-4 col-md-6 col-sm-12">
               <label htmlFor="first name">First name:</label>
@@ -203,7 +203,7 @@ const checkKeyDown = (e) => {
               <TagsInput placeholder='Press enter to add Languages'  selectedTags={selectedTags}  tags={[]}/>
             </div>
           <div className="row">
-            <button type='submit'  className="btn btn-outline-success">Save</button>
+            <button type='submit'  className="btn btn-outline-success" onClick={handleFormSubmit}>Save</button>
           </div>
         </form>
       </div>
